@@ -11,7 +11,10 @@ declination_response_by_unit = survey_data_df.fillna(0).groupby(['Unit'])[
     'What are you taking away from the vaccine discussion?'].apply(lambda x: x[x.str.contains(
         'This did not change my mind, I am not getting it', na=False)].count())
 
-total = pd.concat([total_response_by_unit, declination_response_by_unit], axis=1)
+percent = (declination_response_by_unit / total_response_by_unit) * 100
+
+total = pd.concat([total_response_by_unit, declination_response_by_unit, percent], axis=1)
+
 
 # print(percent_by_unit)
 print(total)
