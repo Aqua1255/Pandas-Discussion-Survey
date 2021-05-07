@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 survey_data_df = pd.read_csv(r'/home/coho/Desktop/Work/Discussion_Survey_Analysis.csv')
 
