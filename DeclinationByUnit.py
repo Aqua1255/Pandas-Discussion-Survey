@@ -13,11 +13,14 @@ declination_response_by_unit = survey_data_df.fillna(0).groupby(['Unit'])[
 
 percent = (declination_response_by_unit / total_response_by_unit) * 100
 
-total = pd.concat([total_response_by_unit, declination_response_by_unit, percent], axis=1)
+total = pd.concat([total_response_by_unit, declination_response_by_unit, percent], keys=['Total Participants',
+                                                                                         'Stubborn Participants',
+                                                                                         'Percent'], axis=1)
 
 
 # print(percent_by_unit)
 print(total)
+total.to_csv('../Desktop/not_getting_vaccine.csv', sep=',')
 # print(total_response_by_unit)
 
 
