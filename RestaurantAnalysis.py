@@ -40,10 +40,23 @@ rollup = df[['Sex', 'Own Car', 'Personality', 'Friends', 'Reenlist',
              'Times Off Post', 'Leadership at DFAC', 'Video Games', 'Education',
              'Monthly Payments']].apply(pd.Series.value_counts)
 
+
 rollup_percent = df[['Sex', 'Own Car', 'Personality', 'Friends', 'Reenlist',
                      'Drinking Habits', 'Tragic Events', 'Time Waiting',
                      'Times Off Post', 'Leadership at DFAC', 'Video Games', 'Education',
                      'Monthly Payments']].apply((lambda x: pd.Series.value_counts(x, normalize=True)))
+
+sex_rollup = pd.concat([rollup['Sex'].dropna(), rollup_percent['Sex'].dropna()], axis=1)
+sex_rollup.columns = ['Raw', 'Percent']
+
+owncar_rollup = pd.concat([rollup['Own Car'].dropna(), rollup_percent['Sex'].dropna()], axis=1)
+
+# print(sex_rollup)
+
+for column in rollup:
+
+    columnsSeriesObj = rollup[column]
+    combined = pd.concat([columnsSeriesObj.values, rollup_percent], axis=1)
 
 # Make a plot
 # plot = df['Time Waiting'].value_counts().plot(kind='bar')
@@ -51,8 +64,8 @@ rollup_percent = df[['Sex', 'Own Car', 'Personality', 'Friends', 'Reenlist',
 # Option for value_counts() of all columns at once
 # cleanStack = df.apply(lambda x: x.value_counts()).T.stack()
 
-rollup.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court', sep=',')
-rollup_percent.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_percent', sep=',')
-df_hobby_total.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_hobby', sep=',')
-df_org_total.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_org', sep=',')
+# rollup.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court', sep=',')
+# rollup_percent.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_percent', sep=',')
+# df_hobby_total.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_hobby', sep=',')
+# df_org_total.to_csv('../Desktop/Work/DFAC_Survey/Submission/PX_Food_Court_org', sep=',')
 
