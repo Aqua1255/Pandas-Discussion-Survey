@@ -2,7 +2,7 @@ import pandas as pd
 
 df = pd.read_csv(r'/home/coho/Desktop/Work/92G_survey.csv', error_bad_lines=False, engine='python',
                  sep=',')
-filtered_df = df[df['In which Warrior Restaurant do you work?'].str.contains('Courage Inn', case=False)]
+filtered_df = df[df['In which Warrior Restaurant do you work?'].str.contains('Ghost 2.0 Bistro', case=False)]
 count = filtered_df[['Gender',
                      'Age',
                      'Rank',
@@ -157,7 +157,7 @@ games_habits.columns = ['Raw', 'Percent']
 bills.columns = ['Raw', 'Percent']
 
 # make pandas excel writer
-writer = pd.ExcelWriter('../Desktop/Work/92G_survey.xlsx')
+writer = pd.ExcelWriter('../Desktop/Work/92G_survey_ghost.xlsx')
 
 # write each sheet
 gender.to_excel(writer, sheet_name='gender')
