@@ -2,62 +2,62 @@ import pandas as pd
 
 df = pd.read_csv(r'/home/coho/Desktop/Work/92G_survey.csv', error_bad_lines=False, engine='python',
                  sep=',')
+filtered_df = df[df['In which Warrior Restaurant do you work?'].str.contains('Courage Inn', case=False)]
+count = filtered_df[['Gender',
+                     'Age',
+                     'Rank',
+                     'Which label describes you best?',
+                     'Do you have friends from your restaurant that you spend time with outside of work?',
+                     'How often do you leave base per week?',
+                     'What recreational activities do you do off post? (Choose which is most applicable to you)',
+                     'Do you anticipate reenlisting?',
+                     'Do you feel like you are a part of your Squad - part of the team?',
+                     'Do you feel like you are part of your Company - part of the team?',
+                     'Do you feel like you are a part of your Battalion - part of the team?',
+                     'On a scale of 1-5, rate your current level of job satisfaction.',
+                     'If you had to choose one from the list below, which way can your command best support you?',
+                     'What is your biggest concern / issue with your job as a Chef? (Choose what best describes your feelings)',
+                     'Do you plan to get the Covid vaccine?',
+                     'If you could make one change to the Warrior Restaurant, what would it be?',
+                     'Have you been the victim of a sexual assault in the last 90 days?',
+                     'When do you most often see leadership eating at your Warrior Restaurant? (PL/PSG and above)',
+                     'In the past 90 days, have you experienced depression or had thoughts of harming yourself? '
+                     '(Choose which most accurately describes you)',
+                     'Do you think there is a difference between the quality of meals on weekdays vs weekends?',
+                     'Before the Army, I lived in',
+                     'What is your current level of education?',
+                     'How many  hours a week do you spend playing video games? ',
+                     'When do you play video games most?',
+                     'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '
+                     ]].apply(pd.Series.value_counts)
 
-count = df[['Gender',
-            'Age',
-            'Rank',
-            'Which label describes you best?',
-            'Do you have friends from your restaurant that you spend time with outside of work?',
-            'How often do you leave base per week?',
-            'What recreational activities do you do off post? (Choose which is most applicable to you)',
-            'Do you anticipate reenlisting?',
-            'Do you feel like you are a part of your Squad - part of the team?',
-            'Do you feel like you are part of your Company - part of the team?',
-            'Do you feel like you are a part of your Battalion - part of the team?',
-            'On a scale of 1-5, rate your current level of job satisfaction.',
-            'If you had to choose one from the list below, which way can your command best support you?',
-            'What is your biggest concern / issue with your job as a Chef? (Choose what best describes your feelings)',
-            'Do you plan to get the Covid vaccine?',
-            'If you could make one change to the Warrior Restaurant, what would it be?',
-            'Have you been the victim of a sexual assault in the last 90 days?',
-            'When do you most often see leadership eating at your Warrior Restaurant? (PL/PSG and above)',
-            'In the past 90 days, have you experienced depression or had thoughts of harming yourself? '
-            '(Choose which most accurately describes you)',
-            'Do you think there is a difference between the quality of meals on weekdays vs weekends?',
-            'Before the Army, I lived in',
-            'What is your current level of education?',
-            'How many  hours a week do you spend playing video games? ',
-            'When do you play video games most?',
-            'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '
-            ]].apply(pd.Series.value_counts)
-
-percent = df[['Gender',
-              'Age',
-              'Rank',
-              'Which label describes you best?',
-              'Do you have friends from your restaurant that you spend time with outside of work?',
-              'How often do you leave base per week?',
-              'What recreational activities do you do off post? (Choose which is most applicable to you)',
-              'Do you anticipate reenlisting?',
-              'Do you feel like you are a part of your Squad - part of the team?',
-              'Do you feel like you are part of your Company - part of the team?',
-              'Do you feel like you are a part of your Battalion - part of the team?',
-              'On a scale of 1-5, rate your current level of job satisfaction.',
-              'If you had to choose one from the list below, which way can your command best support you?',
-              'What is your biggest concern / issue with your job as a Chef? (Choose what best describes your feelings)',
-              'Do you plan to get the Covid vaccine?',
-              'If you could make one change to the Warrior Restaurant, what would it be?',
-              'Have you been the victim of a sexual assault in the last 90 days?',
-              'When do you most often see leadership eating at your Warrior Restaurant? (PL/PSG and above)',
-              'In the past 90 days, have you experienced depression or had thoughts of harming yourself? '
-              '(Choose which most accurately describes you)',
-              'Do you think there is a difference between the quality of meals on weekdays vs weekends?',
-              'Before the Army, I lived in',
-              'What is your current level of education?',
-              'How many  hours a week do you spend playing video games? ',
-              'When do you play video games most?',
-              'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '
-              ]].apply((lambda x: pd.Series.value_counts(x, normalize=True)))
+percent = filtered_df[['Gender',
+                       'Age',
+                       'Rank',
+                       'Which label describes you best?',
+                       'Do you have friends from your restaurant that you spend time with outside of work?',
+                       'How often do you leave base per week?',
+                       'What recreational activities do you do off post? (Choose which is most applicable to you)',
+                       'Do you anticipate reenlisting?',
+                       'Do you feel like you are a part of your Squad - part of the team?',
+                       'Do you feel like you are part of your Company - part of the team?',
+                       'Do you feel like you are a part of your Battalion - part of the team?',
+                       'On a scale of 1-5, rate your current level of job satisfaction.',
+                       'If you had to choose one from the list below, which way can your command best support you?',
+                       'What is your biggest concern / issue with your job as a Chef? (Choose what best describes your feelings)',
+                       'Do you plan to get the Covid vaccine?',
+                       'If you could make one change to the Warrior Restaurant, what would it be?',
+                       'Have you been the victim of a sexual assault in the last 90 days?',
+                       'When do you most often see leadership eating at your Warrior Restaurant? (PL/PSG and above)',
+                       'In the past 90 days, have you experienced depression or had thoughts of harming yourself? '
+                       '(Choose which most accurately describes you)',
+                       'Do you think there is a difference between the quality of meals on weekdays vs weekends?',
+                       'Before the Army, I lived in',
+                       'What is your current level of education?',
+                       'How many  hours a week do you spend playing video games? ',
+                       'When do you play video games most?',
+                       'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '
+                       ]].apply((lambda x: pd.Series.value_counts(x, normalize=True)))
 
 gender = pd.concat([count['Gender'].dropna(), percent['Gender'].dropna()], axis=1)
 age = pd.concat([count['Age'].dropna(), percent['Age'].dropna()], axis=1)
@@ -124,8 +124,11 @@ games_habits = pd.concat(
     [count['When do you play video games most?'].dropna(), percent['When do you play video games most?'].dropna()],
     axis=1)
 bills = pd.concat(
-    [count['On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '].dropna(),
-     percent['On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '].dropna()], axis=1)
+    [count[
+         'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '].dropna(),
+     percent[
+         'On average, how much do you pay total per month? (Everything - rent/mortgage, car, insurance, medical bills, student loans, etc.) '].dropna()],
+    axis=1)
 
 gender.columns = ['Raw', 'Percent']
 age.columns = ['Raw', 'Percent']
@@ -152,7 +155,6 @@ education.columns = ['Raw', 'Percent']
 games_hrs.columns = ['Raw', 'Percent']
 games_habits.columns = ['Raw', 'Percent']
 bills.columns = ['Raw', 'Percent']
-
 
 # make pandas excel writer
 writer = pd.ExcelWriter('../Desktop/Work/92G_survey.xlsx')
@@ -183,7 +185,6 @@ education.to_excel(writer, sheet_name='current education received')
 games_hrs.to_excel(writer, sheet_name='how much video games do you play in hrs')
 games_habits.to_excel(writer, sheet_name='when do you play video games most often')
 bills.to_excel(writer, sheet_name='typical monthly payments')
-
 
 # close pandas excel writer
 writer.save()
