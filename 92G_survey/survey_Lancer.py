@@ -157,7 +157,7 @@ games_habits.columns = ['Raw', 'Percent']
 bills.columns = ['Raw', 'Percent']
 
 # make pandas excel writer
-writer = pd.ExcelWriter('../Desktop/Work/92G_survey_lancer.xlsx')
+writer = pd.ExcelWriter('../../Desktop/Work/92G_survey_lancer.xlsx')
 
 # write each sheet
 gender.to_excel(writer, sheet_name='gender')
